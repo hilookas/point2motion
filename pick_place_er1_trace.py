@@ -132,9 +132,6 @@ class MotionPlanner:
         cv2.imshow(task_instruction, image_cv)
         cv2.waitKey(100)
         
-        print("press any key")
-        cv2.waitKey(0)
-        
         debug_image_rgb = cv2.cvtColor(image_cv, cv2.COLOR_BGR2RGB)
     
         d = img_depth[int(v), int(u)].item()
@@ -168,7 +165,7 @@ class MotionPlanner:
             (*(place_point2arm[:3, 0] * 1000), 3.14, 0, 0)
         ]
         
-        return trace, debug_image_rgb
+        return trace, text_result, debug_image_rgb
     
     def execute(self, trace):
         print("execute")
@@ -209,7 +206,10 @@ def main():
         
         img_rgb = np.asarray(obs["im_rgbd"].color)
         
-        trace, debug_image_rgb = planner.plan(task_instruction, obs)
+        trace, text_result, debug_image_rgb = planner.plan(task_instruction, obs)
+        
+        print("press any key")
+        cv2.waitKey(0)
         
         planner.execute(trace)
 
