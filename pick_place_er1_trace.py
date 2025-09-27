@@ -11,6 +11,7 @@ from pytransform3d import transformations as pt
 from pytransform3d import rotations as pr
 import os
 import atexit
+from argparse import ArgumentParser
 
 class VideoRecorder:
     def __init__(self, filename):
@@ -189,8 +190,17 @@ class MotionPlanner:
         print("finish")
 
 def main():
+    parser = ArgumentParser()
+
+    parser.add_argument('task_instruction',
+                        type=str,
+                        default="Pick up the sponge and put it on the plate.",
+                        help='Task instruction.')
+
+    args = parser.parse_args()
+    
     model_type = "er1_trace"
-    task_instruction = "Pick up the sponge and put it out of plate."
+    task_instruction = args.task_instruction
     
     planner = MotionPlanner(model_type)
     
