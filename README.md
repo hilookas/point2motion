@@ -1,6 +1,6 @@
 # Simple Motion Planner for Pointing Models
 
-This demo is for executing pointing models (e.g. ER1, FSD, RoboPoint) on XArm 6 with a RealSense Depth Camera. An force sensor is recommended for smooth environment interaction.
+This demo is for executing pointing models on XArm 6 with a RealSense Depth Camera. An force sensor is recommended for smooth environment interaction.
 
 ## How to Use?
 
